@@ -11,6 +11,8 @@ There should be a directory inside which seperate files hold data for the halo m
 ## Intensity mapping models
 Inside the "src" directory, the source file "sfr_buffered.cc" contains the default model of star-formation rate for a given halo mass (Eq. (26) of [Silva et al. 2013](https://doi.org/10.1088/0004-637X/763/2/132)). A different model of star-formation rate can be included and used in the source file, "process_buffered.cc". The source file, "lum_buffered.cc", converts SFR to line-luminosities using the pre-defined functions. New models can be added and used in "process_buffered.cc".
 
+**Revised code** -  Added the HI model prescribing HI to individual halo based on its mass (Scheme 3 of [Bagla et al. 2010](https://academic.oup.com/mnras/article/407/1/567/986082), Eq. (6). Also check [Sarkar et al. 2016](https://academic.oup.com/mnras/article/460/4/4310/2609038) Eq. 5)
+
 ## How to use
 Inside the directory "LIM_simulator", type "make" and hit "Enter", which will compile the code and generate an executable "LIM_simulator". This executable needs two text files as inputs to function. The first one (e.g. "param.txt") contains the necessary paramters for the simulation. An example file named "param.txt" is given here, with the meaning of the parameters explained inside. The second file (e.g. "paths_CO.txt") should contain the paths for the halo catalogs, redshifts and names of the output files aranged in seperate columns. For example, this might look like:
 ```
@@ -18,7 +20,11 @@ Halos_z7.000 7.000 CO_map_z7.000.bin
 Halos_z6.000 6.000 CO_map_z6.000.bin
 Halos_z5.000 5.000 CO_map_z5.000.bin
 ```
-Here, the first column represents the directory that holds the halo catalogs. The second column represents the redshift and the third one represents the output binary files that contain the intensity mapping cube. To run the executable, use command "./LIM_simulator param.txt paths_CO.txt". The format of the output files are such that it can it can be read with the following python script:
+Here, the first column represents the directory that holds the halo catalogs. The second column represents the redshift and the third one represents the output binary files that contain the intensity mapping cube. To run the executable, use command "./LIM_simulator param.txt paths_CO.txt". 
+
+**Revised executable** - The code now externally takes the parameters of CO and HI. To pass the parameter for CO and HI, look at the respective executables "./LIM_simulator param.txt paths_CO.txt <alpha_param> <beta_param>" or "./LIM_simulator param.txt paths_HI.txt <Omega_HI_param>".
+Note that the path file name is changed for clarification purposes.
+The format of the output files are such that it can it can be read with the following python script:
 ```
 import numpy as np
 f = open ('CO_map_z6.000.bin', 'rb')
