@@ -10,7 +10,8 @@ std::string Dir;
 std::string Output;
 
 float z;
-float ext_alpha,ext_beta;
+float ext_alpha,ext_beta; // -> Li et al 2016 parameters (alpha and beta)
+// float ext_Omega_HI; // --> Bagle et al. 2010, Debanjan et al. 2016 parameter (Omega_HI)
 
 int 
 main (int argc, char *argv[])
@@ -18,7 +19,7 @@ main (int argc, char *argv[])
   Read_Param(argv[1]);
   ext_alpha = atof(argv[3]);
   ext_beta = atof(argv[4]);
-
+  // ext_Omega_HI = atof(argv[3]);
 
   if (argv[2] == nullptr) {
 
