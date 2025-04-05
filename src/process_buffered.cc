@@ -21,6 +21,7 @@ extern float scaling_unit;
 extern float h;
 extern float Omega_m;
 extern double Lambda;
+extern float ext_alpha,ext_beta; // -> external parameters 
 
 extern uint64_t N_cell_x_orig;
 extern uint64_t N_cell_x;
@@ -72,7 +73,7 @@ LIM_Buffered ()
     Coarse_Grid_Buffered (Pos_x, Pos_y, Pos_z, Buf_sz);
     SFR_Buffered (Lum, Buf_sz, z);
     //Cii_Lum_Buffered(Lum, Buf_sz);
-    CO_Lum_Buffered_1 (Lum, Buf_sz);
+    CO_Lum_Buffered_1_new (Lum, Buf_sz,ext_alpha,ext_beta);
     Cloud_in_Cell_Buffered (Pos_x, Pos_y, Pos_z, Lum, Buf_sz, Map);
   }
 
@@ -80,7 +81,7 @@ LIM_Buffered ()
   Coarse_Grid_Buffered (Pos_x, Pos_y, Pos_z, rem);
   SFR_Buffered (Lum, rem, z);
   //Cii_Lum_Buffered (Lum, rem);
-  CO_Lum_Buffered_1 (Lum, rem);
+  CO_Lum_Buffered_1 (Lum, rem,ext_alpha,ext_beta);
   Cloud_in_Cell_Buffered (Pos_x, Pos_y, Pos_z, Lum, rem, Map);
 
   File_Handler (in, 1);

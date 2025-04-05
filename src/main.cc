@@ -10,11 +10,15 @@ std::string Dir;
 std::string Output;
 
 float z;
+float ext_alpha,ext_beta;
 
 int 
 main (int argc, char *argv[])
 {
   Read_Param(argv[1]);
+  ext_alpha = atof(argv[3]);
+  ext_beta = atof(argv[4]);
+
 
   if (argv[2] == nullptr) {
 
