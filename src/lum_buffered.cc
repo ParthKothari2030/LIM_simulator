@@ -1,7 +1,10 @@
 #include <cmath>
 #include <cstdint>
+#include <math.h>
 #include <omp.h>
 #include <valarray>
+#include <numeric>  // Include this header for std::accumulate
+#include <iostream>
 
 extern float h;
 extern float Omega_m;
@@ -13,6 +16,13 @@ Hubble (float zz)
   return 100 * 3.24e-20 * h *
          sqrt(Omega_m * powf(1.0 + zz, 3.0) + (1.0 - Omega_m));
 }
+
+inline double
+sum (float x, float y)
+{
+  return x + static_cast<double>(y);
+}
+
 
 void
 Cii_Lum_Buffered (std::valarray<float> &Lum, uint32_t buff_sz)
