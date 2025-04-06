@@ -84,7 +84,7 @@ LIM_Buffered ()
   Coarse_Grid_Buffered (Pos_x, Pos_y, Pos_z, rem);
   SFR_Buffered (Lum, rem, z);
   //Cii_Lum_Buffered (Lum, rem);
-  CO_Lum_Buffered_1 (Lum, rem,ext_alpha,ext_beta);
+  CO_Lum_Buffered_1_new (Lum, rem,ext_alpha,ext_beta);
   // HI_temp_Buffered(Lum,rem,ext_Omega_HI,N_halo);  
   Cloud_in_Cell_Buffered (Pos_x, Pos_y, Pos_z, Lum, rem, Map);
 
